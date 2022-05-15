@@ -25,6 +25,9 @@ class Convert:
                 image.save(f'{i}.png')
 
         else:
+            if not os.path.exists(f'{path}/{self.directory}'):
+                os.mkdir(f'{self.directory}')
+                
             for i, image in enumerate(images):
                 image.save(f'{self.directory}/{i}.png')
 
