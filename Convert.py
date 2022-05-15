@@ -21,6 +21,9 @@ class Convert:
         images = convert_from_path(self.path, self.resolution, poppler_path=self._popper, output_folder='cache/')
 
         if self.directory is None:
+            if not os.path.exists(f'{path}/{self.directory}'):
+                os.mkdir(f'{self.directory}')
+
             for i, image in enumerate(images):
                 image.save(f'{i}.png')
 
