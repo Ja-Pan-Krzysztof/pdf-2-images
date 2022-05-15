@@ -13,6 +13,11 @@ class Convert:
         self.directory = directory
 
     def main(self):
+        path = Path().resolve()
+
+        if not os.path.exists(f'{path}/cache'):
+            os.mkdir('cache')
+
         images = convert_from_path(self.path, self.resolution, poppler_path=self._popper, output_folder='cache/')
 
         if self.directory is None:
@@ -23,7 +28,6 @@ class Convert:
             for i, image in enumerate(images):
                 image.save(f'{self.directory}/{i}.png')
 
-        path = Path().resolve()
         cache_path = f'{path}\\cache'
 
         if os.path.exists(f'{cache_path}'):
